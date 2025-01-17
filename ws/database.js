@@ -1,13 +1,9 @@
 import mongoose from "mongoose";
-const URI = "";
+import 'dotenv/config';
 
-mongoose.set("useNewUrlparser", true);
-mongoose.set("useFindAndModify", false);
-mongoose.set("useCreateIndex", true);
-mongoose.set("useUnifiedTopology", true);
+const URI = process.env.URI;
 
-mongoose.connect(URI).then(() => {
-  console.log("DB is UP").catch(() => {
-    console.log(err);
-  });
-});
+mongoose
+.connect(URI)
+.then(() => console.log("DB is Up"))
+.catch((err) => console.log(err));
